@@ -760,7 +760,8 @@ export default class JiraApi {
         pathname: '/group',
         query: {
           groupname,
-          expand: `users[${startAt}:${maxResults}]`,
+          startAt,
+          maxResults,
         },
       }), {
         followAllRedirects: true,
@@ -782,7 +783,8 @@ export default class JiraApi {
         pathname: '/group/member',
         query: {
           groupname,
-          expand: `users[${startAt}:${maxResults}]`,
+          startAt,
+          maxResults,
           includeInactiveUsers,
         },
       }), {
@@ -2217,10 +2219,12 @@ export default class JiraApi {
    * @name genericGet
    * @function
    * @param {string} endpoint - Rest API endpoint
+   * @param {object} [options] - an object containing fields and formatting how the
    */
-  genericGet(endpoint) {
+  genericGet(endpoint, ...options) {
     return this.doRequest(this.makeRequestHeader(this.makeUri({
       pathname: `/${endpoint}`,
+      ...options,
     })));
   }
 
