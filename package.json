@@ -1,5 +1,5 @@
 {
-  "name": "jira-client",
+  "name": "@hyperingenuity/jira-client",
   "version": "8.2.2",
   "description": "Wrapper for the JIRA API",
   "author": "Steven Surowiec <steven.surowiec@gmail.com>",
